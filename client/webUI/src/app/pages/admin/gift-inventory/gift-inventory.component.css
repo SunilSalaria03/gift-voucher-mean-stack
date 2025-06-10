@@ -1,0 +1,25 @@
+.mat-mdc-form-field{
+    min-width: 300px !important;
+}
+
+/* copy */
+.copy-text{
+    font-size: 20px;    
+    right: 10px;  
+    border-radius: 5px;  
+    padding: 3px 7px;
+    font-weight: 500;
+    bottom: 2px;
+  }
+
+  mat-icon.copy-icon:hover{
+    cursor: pointer;
+  }
+
+  mat-icon.copy-icon{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    font-size: 20px !important;
+  }
+  /* /copy */

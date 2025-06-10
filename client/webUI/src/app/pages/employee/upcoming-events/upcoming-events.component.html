@@ -1,0 +1,127 @@
+<section class="container-fluid p-0">
+  <!-- header section -->
+  <app-employee-header></app-employee-header>
+  <!-- /header section  -->
+</section>
+<section class="container my-5 d-flex flex-column min-vh-100">
+  <div class="row">
+    <div class="col-12 mb-5">
+      <div class="banner-font fw-bold">
+        Upcoming <span class="text-primary">Events!</span>
+      </div>
+    </div>
+  </div>
+  <div class="row align-items-center event-cards-ui">
+    <div *ngFor="let event of events; let i = index" class="col-3 mb-4">
+      <mat-card class="shadow-sm product-reward-card p-3 cursor-pointer" (click)="openDialog(event)"
+        appearance="outlined">
+        <mat-card-content>
+          <div class="text-uppercase fs-13 mb-2">
+            {{ event.date | date : "MMM" }}
+          </div>
+          <div class="fw-bold event-date">
+            {{ event.date | date : "d" }}
+          </div>
+          <div class="my-4">
+            {{ event.title }}
+          </div>
+          <div>
+            <div>{{ event.startTime }} - {{ event.endTime }}</div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-9">
+              {{ event.date | date }}
+            </div>
+            <div class="col-3 text-end">
+              <mat-icon>arrow_forward</mat-icon>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+  
+  
+  
+  
+</section>
+<!-- footer -->
+<app-employee-footer></app-employee-footer>
+<!-- dialog -->
+<ng-template #content>
+  <mat-dialog-content>
+    <h4>Event Overview</h4>
+    <div class="gift-img position-relative">
+      <img [src]="selectedEvent.imageUrl" width="500px" height="250px" alt="" />
+    </div>
+    <div class="row mt-4">
+      <div class="col-6">
+        <div class="mb-4">
+          <div  class="mb-2">Event Name</div>
+          <div class="fs-20 pb-2 text-uppercase">
+            {{ selectedEvent.title }}
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="mb-4">
+          <div  class="mb-2">Event Date</div>
+          <div class="emp-code-label fs-20 pb-2 text-uppercase">
+            {{ selectedEvent.date | date }}
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="mb-4">
+          <div  class="mb-2">Event Time</div>
+          <div class="emp-code-label fs-20 pb-2 text-uppercase">
+            {{ selectedEvent.startTime }}-{{ selectedEvent.endTime }}
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="mb-4">
+          <div  class="mb-2">City</div>
+          <div class="emp-code-label fs-20 pb-2 text-uppercase">
+            {{ selectedEvent.city }}
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="mb-4">
+          <div  class="mb-2">Address</div>
+          <div class="emp-code-label fs-20 pb-2 text-uppercase">
+            {{ selectedEvent.address }}
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="mb-4">
+          <div  class="mb-2">About</div>
+          <div class="emp-code-label fs-20 pb-2 text-uppercase">
+            {{ selectedEvent.about }}
+          </div>
+        </div>
+      </div>      
+      <div class="mb-4">
+        <div  class="mb-2">Note</div>
+        <div class="emp-code-label fs-20 pb-2 text-uppercase">
+          {{ selectedEvent.note }}
+        </div>
+      </div>
+      <div class="mb-4">
+        <div  class="mb-2">Why should you attend?</div>
+        <ul class="ps-3 mt-0">
+          <ng-container *ngFor="let reason of whyYouAttendList">
+            <li class="emp-code-label fs-16 pb-2 text-uppercase">
+              {{ reason }}
+            </li>
+          </ng-container>
+        </ul>
+      </div>
+    </div>
+
+  </mat-dialog-content>
+</ng-template>
+<!-- /dialog -->

@@ -1,0 +1,42 @@
+<section class="bg-white border-bottom border-light">
+  <header
+    class="container-fluid d-flex justify-content-between align-items-center py-3"
+  >
+    <!-- menu button -->
+    <div (click)="toggleMenu()" style="cursor: pointer">
+      <mat-icon>menu</mat-icon>
+    </div>
+    <!-- /menu button -->
+    <div class="header-links d-flex">
+      <div class="d-flex align-items-baseline">
+        <!-- admin name -->
+        <div [matMenuTriggerFor]="menu" class="mx-3 admin d-flex text-capitalize">
+          <mat-icon>person</mat-icon>{{ loggedUser.name }}
+        </div>
+        <!-- mat menu -->
+        <div>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item class="dropdown">
+              <div [routerLink]="['/admin/settings']" class="d-flex">
+                <mat-icon class="dropdown-icon">person</mat-icon>
+                <span>Profile</span>
+              </div>
+            </button>
+            <button mat-menu-item class="dropdown">
+              <div
+                [routerLink]="['/admin-login-access']"
+                (click)="logOut()"
+                class="d-flex"
+              >
+                <mat-icon class="dropdown-icon">power_settings_new</mat-icon>
+                <span>Logout</span>
+              </div>
+            </button>
+          </mat-menu>
+        </div>
+        <!-- /mat menu -->
+        <!-- /admin name -->
+      </div>
+    </div>
+  </header>
+</section>

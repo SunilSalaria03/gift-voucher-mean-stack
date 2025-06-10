@@ -1,0 +1,64 @@
+<!-- container-section -->
+<section class="container-fluid p-0 vh-100 d-flex justify-content-between flex-sm-column">
+  <!-- header section -->
+  <app-employee-header></app-employee-header>
+  <!-- /header section  -->
+
+  <!-- main-section -->
+  <section class="container d-flex justify-content-center align-items-center my-5">
+    <div class="row justify-content-center align-items-center">
+      <!-- image-section -->
+      <div class="col-4">
+        <div>
+          <img src="assets/images/gift-selection.png" class="w-100 h-100 pe-4" />
+        </div>
+      </div>
+      <!-- mage-section -->
+
+      <div class="col-5">
+        <!-- heading-section -->
+        <div>
+          <div class="banner-font fw-bold">
+            Welcome,<span class="text-primary"> Administrator!</span>
+          </div>
+          <p>Enter your administrator code + key and oversee the system!</p>
+        </div>
+        <!-- /heading-section -->
+
+        <!-- input-box -->
+        <form [formGroup]="administratorForm" (ngSubmit)="onSubmit()" class="mt-5">
+          <h4 class="fw-bold mb-1">Administrator Code</h4>
+          <mat-form-field appearance="outline" class="d-block input-lg input">
+            <input matInput formControlName="administratorCode" />
+            <mat-icon matSuffix>redeem</mat-icon>
+            @if
+            (this.administratorForm.get("administratorCode")?.hasError("required"))
+            {
+            <mat-error>This is Required</mat-error> }
+          </mat-form-field>
+          <h4 class="fw-bold mb-1">Administrator Key</h4>
+          <mat-form-field appearance="outline" class="d-block input-lg input">
+            <input matInput formControlName="administratorKey" />
+            <mat-icon matSuffix>vpn_key</mat-icon>
+            @if
+            (this.administratorForm.get("administratorKey")?.hasError("required"))
+            {
+            <mat-error>This is Required</mat-error> }
+          </mat-form-field>
+          <div class="mt-2">
+            <button mat-flat-button class="button-mh-60 py-4 text-white bg-dark shadow-sm w-100 me-2">
+              <mat-icon>celebration</mat-icon>Manage Rewards
+            </button>
+          </div>
+        </form>
+        <!-- input-box -->
+      </div>
+    </div>
+  </section>
+  <!-- main-section -->
+
+  <!-- footer section -->
+  <app-employee-footer></app-employee-footer>
+  <!-- /footer section -->
+</section>
+<!-- /container-section -->

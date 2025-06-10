@@ -1,0 +1,25 @@
+<!-- Sidebar -->
+<nav class="sidebar bg-dark shadow-sm h-100" [ngClass]="{'collapsed': !isSidebarOpen}">
+    <div class="logo-font p-3">
+        <span class="text-white fw-bold">Choice</span>
+        <span class="text-primary">Chase</span>
+    </div>
+    <a [routerLink]="['/admin/dashboard']" routerLinkActive="active" class="d-flex text-white p-3 text-decoration-none">
+        <mat-icon class="me-4">home</mat-icon>Dashboard
+    </a>
+    <a [routerLink]="['/admin/events']" routerLinkActive="active" class="d-flex text-white p-3 text-decoration-none">
+        <mat-icon class="me-4">home</mat-icon>Events
+    </a>
+    <a [routerLink]="['/admin/generate-emp-code']" routerLinkActive="active" class="d-flex text-white p-3 text-decoration-none">
+        <mat-icon class="me-4">person_add</mat-icon>Generate EmpCode
+    </a>
+    <a [routerLink]="['/admin/gift-inventory']" routerLinkActive="active" class="d-flex text-white p-3 text-decoration-none">
+        <mat-icon class="me-4">redeem</mat-icon>Gift Inventory
+    </a>
+    <a [routerLink]="['/admin/employee-picks']" routerLinkActive="active" class="d-flex text-white p-3 text-decoration-none">
+        <mat-icon class="me-4">widgets</mat-icon>Employee Picks
+    </a>
+    <a [routerLink]="['/admin/feedback']" routerLinkActive="active" class="d-flex text-white p-3 text-decoration-none">
+        <mat-icon class="me-4">chat</mat-icon>Suggestions
+    </a>    
+</nav>

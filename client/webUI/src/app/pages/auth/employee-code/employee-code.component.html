@@ -1,0 +1,51 @@
+<!-- container -->
+<section class="container-fluid p-0 vh-100 d-flex justify-content-between flex-sm-column">
+  <!-- header section -->
+  <app-employee-header></app-employee-header>
+  <!-- /header section  -->
+
+  <!-- main-section -->
+  <section class="container  d-flex justify-content-center align-items-center my-5">
+    <div class="row justify-content-center align-items-center">
+      <!-- image-section -->
+      <div class="col-4 pe-4">
+        <div>
+          <img src="assets/images/gift-selection.png" class="w-100 h-100" />
+        </div>
+      </div>
+      <!-- /image-section -->
+      <div class="col-5">
+        <!-- title-section -->
+        <div class="mb-4">
+          <div class="banner-font position-relative fw-bold">
+            Welcome, to Your <span class="text-primary">Rewards!</span>
+          </div>
+          <p>Enter your employee code and discover your exclusive rewards!</p>
+        </div>
+        <!-- /title-section -->
+        <!-- input-box -->
+        
+        <form [formGroup]="employeeCodeForm" (ngSubmit)="onSubmit()">
+          <h4 class="mt-5 mb-1 fw-bold">Employee Code</h4>
+          <mat-form-field appearance="outline" class="d-block input-lg">
+            <input matInput formControlName="employeeCode" />
+            <mat-icon matSuffix>redeem</mat-icon>
+            <mat-error>This is Required</mat-error>
+          </mat-form-field>          
+          <div class="mt-2">
+            <button mat-flat-button class="button-mh-60 py-4 text-white bg-dark shadow-sm w-100 me-2">
+              <mat-icon>celebration</mat-icon>Access your Rewards
+            </button>
+          </div>
+        </form>
+        <!-- /input-box -->
+      </div>
+    </div>
+  </section>
+  <!-- /main-section -->
+
+  <!-- footer section -->
+  <app-employee-footer></app-employee-footer>
+  <!-- /footer section -->
+</section>
+<!-- /container -->

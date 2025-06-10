@@ -1,0 +1,26 @@
+.curve-image{
+    transform: rotate(122deg);    
+      z-index: 9;
+      left: -140px;
+      top: -65px;
+  }
+
+  /* dialog-box */ 
+  .emp-code-label{   
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.6;  
+  }
+ 
+  .gift-img{    
+    left: -20px;
+  }
+
+  .emp-code-data{
+    font-size: 20px;
+  }
+  /* /dialog box */
+
+
+  

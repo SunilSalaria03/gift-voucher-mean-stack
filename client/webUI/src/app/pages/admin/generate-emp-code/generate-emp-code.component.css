@@ -1,0 +1,84 @@
+/* copy */
+.copy-text{
+    font-size: 20px;    
+    right: 10px;  
+    border-radius: 5px;  
+    padding: 3px 7px;
+    font-weight: 500;
+  }
+
+  mat-icon.copy-icon:hover{
+    cursor: pointer;
+  }
+
+  mat-icon.copy-icon{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    font-size: 20px !important;
+  }
+  /* /copy */
+
+  .disabled {
+    pointer-events: none;    
+  }
+
+
+  .primary-admin{
+    border-radius: 5px;
+  }
+
+  /* toggle button */
+  .rounded-toggle mat-button-toggle {
+    border-radius: 50px !important; /*Ensures individual buttons are rounded
+    /* padding: 8px 10px; Adjust padding      */
+  }
+
+  :host ::ng-deep  .mat-button-toggle-label-content{
+    padding: 10px 20px !important;
+  }
+
+  .mat-button-toggle-group {
+    border-radius: 50px !important;
+    background-color: #e8e8e8 !important;   
+  }
+
+  /* Apply orange background when selected */
+.toggle-option.mat-button-toggle-checked {
+  background-color: #fff !important;
+  color: black !important;
+  border-radius: 50px !important;
+  margin: 4px !important;  
+}
+
+/* Ensure unselected button doesn't shift */
+.toggle-option:not(.mat-button-toggle-checked) {
+  line-height: 1 !important; /* Prevents text shifting */
+}
+
+.toggle-option{
+  display: flex;
+  align-items: center; /* Keeps text vertically centered */
+  justify-content: center;
+}
+
+.mat-button-toggle-standalone:not([class*=mat-elevation-z]), .mat-button-toggle-group:not([class*=mat-elevation-z]) {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+}
+
+/* lock icon */
+.lock.material-icons{
+  font-size: 20px !important;
+}
+
+.lock{
+  top: -2px;
+  left: -1px;
+}
+
+
+
+
+
+
+  

@@ -1,0 +1,28 @@
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    transition:  0.3s ease-in-out;
+    overflow: hidden;    
+}
+nav a {
+    white-space: nowrap;
+}
+
+.sidebar.collapsed {
+    width: 0px; /* Collapsed width */
+}
+
+.sidebar a:hover {
+    background-color: #eb7d2e;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+.sidebar a.active {
+    background-color: #eb7d2e !important;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* == logo  == */
+.logo-font{
+margin-bottom: 30px;
+}

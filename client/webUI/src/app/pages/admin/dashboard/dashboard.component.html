@@ -1,0 +1,189 @@
+<section class="h-100">
+  <div>
+    <h4 class="fw-bold mb-4">Dashboard</h4>
+  </div>
+  <!-- loader -->
+  <div *ngIf="isLoading" class="spinner-container d-flex justify-content-center align-items-center h-100 w-100">
+    <mat-spinner [diameter]="50"></mat-spinner>
+  </div>
+  <!-- /loader -->
+  <div *ngIf="!isLoading">
+    <div class="row">
+      <div class="col-8">
+        <!-- welcome admin -->
+        <div class="row mb-4">
+          <div class="col-12">
+            <mat-card class="bg-white shadow-sm product-reward-card p-3 position-relative" appearance="outlined">
+              <mat-card-content>
+                <div class="row">
+                  <div class="col-7">
+                    <div>
+                      <h5 class="fw-bold text-primary">
+                        Welcome {{ loggedUser.name }}!
+                      </h5>
+                    </div>
+                    <div>
+                      Manage employee gift selections with ease! Here, you can
+                      track employee preferences, and analyze ratings to ensure
+                      the best gifting experience.
+                    </div>
+                  </div>
+                  <div class="col-5">
+                    <img src="assets/images/welcome-admin.png" width="300" height="300" alt=""
+                      class="welcome-admin position-absolute" />
+                  </div>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+        <!-- /welcome admin -->
+        <!-- employees products suggestions -->
+        <div class="row mb-4">
+          <div class="col-4">
+            <mat-card class="bg-white shadow-sm product-reward-card p-3 text-center" appearance="outlined">
+              <mat-card-content>
+                <div class="employees fw-bold">{{ totalEmployees }}</div>
+                <div class="fs-14 mt-4">Total Employees</div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+          <div class="col-4">
+            <mat-card class="bg-white shadow-sm text-center product-reward-card p-3" appearance="outlined">
+              <mat-card-content>
+                <div class="products fw-bold">{{ totalProducts }}</div>
+                <div class="fs-14 mt-4">Total Products</div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+          <div class="col-4">
+            <mat-card class="bg-white shadow-sm text-center product-reward-card p-3" appearance="outlined">
+              <mat-card-content>
+                <div class="products fw-bold">{{ totalSuggestions }}</div>
+                <div class="fs-14 mt-4">Total Suggestions</div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+        <!-- /employees products suggestions -->       
+        <div class="row">
+          <!-- gift selection overview -->
+          <div class="col-12">
+            <mat-card class="bg-white shadow-sm product-reward-card p-3 mb-4" appearance="outlined">
+              <mat-card-content>
+                <div class="row">
+                  <div class="col-3">
+                    <img src="assets/images/products/create-magic.png" width="220" height="220"
+                      class="position-absolute gift-selection-overview" alt="" />
+                  </div>
+                  <div class="col-9">
+                    <div>
+                      <h5 class="fw-bold">Gift Selection Overview</h5>
+                    </div>
+                    Get a quick snapshot of employee gift selections and product popularity. Track total employees,
+                    available products, and selection trends in real-time. Analyze the pick percentage to understand
+                    gifting preferences and make informed decisions for future rewards!
+                  </div>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+          <!-- /gift selection overview -->
+          <!-- employee picks status -->
+          <div class="col-12">
+            <mat-card class="bg-white shadow-sm product-reward-card p-3" appearance="outlined">
+              <mat-card-content>
+                <div>
+                  <h5 class="fw-bold">Employee Picks Status</h5>
+                </div>
+                <!-- pie chart -->
+                <div class="pie-chart">
+                  <ngx-charts-pie-chart [view]="view" [scheme]="colorScheme" [results]="pieChartData"
+                    [gradient]="gradient" [legend]="showLegend" [legendPosition]="legendPosition" [labels]="showLabels"
+                    [doughnut]="isDoughnut" (select)="onSelect($event)" [tooltipDisabled]="false"
+                    (activate)="onActivate($event)" (deactivate)="onDeactivate($event)">
+                  </ngx-charts-pie-chart>
+                </div>
+                <!-- /pie chart -->
+                <div>
+                  This section provides a comprehensive overview of gift selection progress through
+                  a pie chart. It accurately reflects the percentage of employees who have completed their selection
+                  versus those still pending, enabling efficient tracking and decision-making.
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+          <!-- /employee picks status -->
+        </div>        
+      </div>
+      <!-- product pick percentage -->
+      <div class="col-4">
+        <mat-card class="bg-white shadow-sm product-reward-card p-3 h-100" appearance="outlined">
+          <mat-card-content>
+            <div>
+              <h5 class="fw-bold">Product Pick Percentage</h5>
+            </div>
+            <!-- virtual scroll -->
+            <cdk-virtual-scroll-viewport itemSize="80" class="viewport" (scrolledIndexChange)="onScrollProducts()">
+              <div *cdkVirtualFor="let product of productData; let i = index" class="col-12 p-1">
+                <mat-card class="product-card bg-white shadow-sm product-reward-card p-2 my-1" appearance="outlined">
+                  <mat-card-content class="card-product-percentage d-flex justify-content-between align-items-center">
+                    <div class="d-flex">
+                      <div class="d-flex align-items-center">
+                        <img [src]="product.productImageDetails.imageUrl" class="user-profile" alt="" />
+                      </div>
+                      <div>
+                        <div class="fw-bold product-title">
+                          {{ product.productTitle }}
+                        </div>
+                        <div class="product-code">
+                          {{ product.couponCode }}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="progress-circle">
+                      {{ product.pickedCountPercentage }}%
+                    </div>
+                  </mat-card-content>
+                </mat-card>
+              </div>
+              <!-- <div
+                *cdkVirtualFor="let product of productData; let i = index"
+                class="col-12"
+              >
+                <mat-card class="product-card shadow-sm p-3 my-4">
+                  <mat-card-content
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div class="d-flex align-items-center">
+                      <img
+                        [src]="product.productImageDetails.imageUrl"
+                        class="product-image"
+                        alt=""
+                      />
+                      <div class="ps-3">
+                        <div class="fw-bold product-title">
+                          {{ product.productTitle }}
+                        </div>
+                        <div>
+                          <small class="product-code">{{
+                            product.couponCode
+                          }}</small>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="progress-circle">
+                      {{ product.pickedCountPercentage }}%
+                    </div>
+                  </mat-card-content>
+                </mat-card>
+              </div> -->
+            </cdk-virtual-scroll-viewport>
+            <!-- End Virtual Scroll -->
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <!-- /product pick percentage -->
+    </div>
+  </div>
+</section>

@@ -1,0 +1,36 @@
+<section>
+  <div>
+    <h5 class="fw-bold mb-4">Suggestions</h5>
+  </div>
+  <div class="row">
+    <div class="col-3" *ngFor="let card of cards">
+      <mat-card
+        class="bg-white shadow-sm product-reward-card   justify-content-between"
+        appearance="outlined"
+      >
+        <mat-card-content class="pb-3">
+          <!-- User Image and Name -->
+          <div>
+            <div class="user-info">
+              <div class="user-initials shadow-sm d-flex align-item-center">
+                {{ getInitials(card.name) }}
+              </div>
+              <div>
+                <span class="user-name fw-bold">{{ card.name }}</span>
+                <div class="emp-code">{{ card.employeeCode }}</div>
+              </div>
+            </div>
+          </div>
+        </mat-card-content>
+        <mat-card-actions class="border-top border-light ps-3">
+          <!-- Description -->
+          <p class="description ">
+            {{ card.description }}
+            
+          </p>
+                  
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</section>
